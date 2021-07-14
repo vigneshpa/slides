@@ -28,8 +28,6 @@ body
         h4 Arch proot on termux
         p To install arch linux on termux and to run it every time when you open it, run the following command in termux shell after installing proot-distro (`pkg install proot-distro`) and archlinux (`proot-distro install archlinux`)
         p This script overwrites the .bashrc file in termux home and archlinux's root home. If you exit from the shell with 0 return code (e.g. `exit 0` or `exit`) the termux shell will also exit but if you exit with any non zero value the termux prompt will not close.
-
-        h6 Setup arch linux on termux:
         pre
           code(data-trim, data-noescape)
             | curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/vigneshpa/arch-setup/main/termux.sh | bash

@@ -16,41 +16,39 @@
 		"version": "2.0.0",
 		"tasks": [
 			{
-				"label": "Build slide",
+				"label": "Build opened Presentation",
 				"isBackground": false,
 				"type": "process",
 				"options": {
 					"env": {
 						"NODE_ENV": "production",
-						"SLIDE": "${fileBasename}"
+						"SLIDE": "${fileBasenameNoExtension}"
 					}
 				},
-				"command": "npx",
+				"command": "npm",
 				"args": [
-					"webpack"
+					"run",
+					"build"
 				],
 				"group": {
 					"kind": "build",
 					"isDefault": true
 				}
 			},
+		]
+	},
+	"launch": {
+		"configurations": [
 			{
-				"label": "Dev slide",
-				"isBackground": true,
-				"type": "process",
-				"options": {
-					"env": {
-						"NODE_ENV": "developement",
-						"SLIDE": "${fileBasename}"
-					}
-				},
-				"command": "npx",
-				"args": [
-					"webpack",
-					"serve",
-					"--open"
-				],
-				"problemMatcher": []
+				"type": "node-terminal",
+				"name": "Serve this file",
+				"request": "launch",
+				"command": "npm run serve",
+				"cwd": "${workspaceFolder}",
+				"env": {
+					"NODE_ENV": "developement",
+					"SLIDE": "${fileBasenameNoExtension}"
+				}
 			}
 		]
 	}

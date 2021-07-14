@@ -1,9 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const resolve = require("path").resolve;
-const slide = (process.env.SLIDE || 'test.pug').replace(/\.[^/.]+$/, "");
-const template = '!!pug-loader!'+resolve(__dirname, `slides/${slide}.pug`);
+const slide = process.env.SLIDE || 'test.pug';
+const template = '!!pug-loader!'+resolve(__dirname, `presentations/${slide}.pug`);
 const entry = {};
-entry[slide] = resolve(__dirname, `slides/${slide}.js`);
+entry[slide] = resolve(__dirname, `presentations/${slide}.js`);
 module.exports = {
     entry,
     module: {
