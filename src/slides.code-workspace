@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"name": "Source",
+			"path": "."
+		},
+		{
+			"name": "dist",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"emeraldwalk.runonsave": {
+			"commands": [
+				{
+					"match": "\\.md$",
+					"cmd": "echo \"Save detected ${file}\"",
+				},
+			]
+		}
+	}
+}
