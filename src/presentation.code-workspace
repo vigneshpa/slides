@@ -46,9 +46,10 @@
 				"command": "npm run serve",
 				"cwd": "${workspaceFolder}",
 				"env": {
-					"NODE_ENV": "developement",
+					"NODE_ENV": "development",
 					"SLIDE": "${fileBasenameNoExtension}"
-				}
+				},
+				"autoAttachChildProcesses": true
 			}
 		]
 	}
