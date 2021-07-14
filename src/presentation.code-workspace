@@ -1,16 +1,12 @@
 {
 	"folders": [
 		{
-			"name": "Source",
-			"path": "."
-		},
-		{
-			"name": "dist",
 			"path": ".."
-		}
+		},
 	],
 	"settings": {
-		"editor.tabSize": 2
+		"editor.tabSize": 2,
+		"liveServer.settings.multiRootWorkspaceName": "Source"
 	},
 	"tasks": {
 		"version": "2.0.0",
@@ -23,7 +19,8 @@
 					"env": {
 						"NODE_ENV": "production",
 						"SLIDE": "${fileBasenameNoExtension}"
-					}
+					},
+					"cwd": "${workspaceFolder}/src"
 				},
 				"command": "npm",
 				"args": [
@@ -44,7 +41,7 @@
 				"name": "Serve this file",
 				"request": "launch",
 				"command": "npm run serve",
-				"cwd": "${workspaceFolder}",
+				"cwd": "${workspaceFolder}/src",
 				"env": {
 					"NODE_ENV": "development",
 					"SLIDE": "${fileBasenameNoExtension}"

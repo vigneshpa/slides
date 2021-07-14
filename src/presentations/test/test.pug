@@ -1,0 +1,28 @@
+html(lang="en")
+
+head
+  meta(charset="UTF-8")
+  meta(http-equiv="X-UA-Compatible", content="IE=edge")
+  meta(name="viewport", content="width=device-width, initial-scale=1.0")
+  title Arch Setup
+body
+  .reveal
+    .slides
+      section
+        h4 Test Presentation
+        p This is a test presentation to test my setup
+      section(data-background-color="Orange")
+        h4 Testing Image 
+        img(src=require("./Node.js_logo.svg"))
+      section(data-background-color="MediumSeaGreen")
+        h4 Testing Video
+        video(data-src="https://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_720p_stereo.ogg" controls)
+      section(data-background-color="SlateBlue")
+        h6 Testing math
+        p.
+          \[\begin{aligned}
+          c \not = {a + b \over a }
+          \end{aligned} \]
+      section 
+        h4 Thank You
+        a(href="pdf/test.pdf") Download
