@@ -10,13 +10,48 @@
 		}
 	],
 	"settings": {
-		"emeraldwalk.runonsave": {
-			"commands": [
-				{
-					"match": "\\.md$",
-					"cmd": "echo \"Save detected ${file}\"",
+		"editor.tabSize": 2
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Build slide",
+				"isBackground": false,
+				"type": "process",
+				"options": {
+					"env": {
+						"NODE_ENV": "production",
+						"SLIDE": "${fileBasename}"
+					}
 				},
-			]
-		}
+				"command": "npx",
+				"args": [
+					"webpack"
+				],
+				"group": {
+					"kind": "build",
+					"isDefault": true
+				}
+			},
+			{
+				"label": "Dev slide",
+				"isBackground": true,
+				"type": "process",
+				"options": {
+					"env": {
+						"NODE_ENV": "developement",
+						"SLIDE": "${fileBasename}"
+					}
+				},
+				"command": "npx",
+				"args": [
+					"webpack",
+					"serve",
+					"--open"
+				],
+				"problemMatcher": []
+			}
+		]
 	}
 }
