@@ -22,7 +22,7 @@ const product = "chrome" || "firefox";
   await page.goto(pageURL, {
     waitUntil: 'networkidle0'
   });
-  await WaitMs(2000);
+  await WaitMs(5000);
 
   console.log("Printing the pdf");
   await page.pdf({
