@@ -11,18 +11,20 @@ body
       section
         h4 Test Presentation
         p This is a test presentation to test my setup
-      section(data-background-color="Orange")
+      section(data-background-color="#053742" data-auto-animate data-background-transition="zoom")
+        h4 Testing Image 
+      section(data-background-color="#A03C78" data-auto-animate)
         h4 Testing Image 
         img(src=require("./Node.js_logo.svg"))
-      section(data-background-color="MediumSeaGreen")
+      section(data-background-color="#402218")
         h4 Testing Video
         video(data-src="https://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_720p_stereo.ogg" controls)
-      section(data-background-color="SlateBlue")
+      section(data-background-color="#52006A")
         h6 Testing math
         p.
           \[\begin{aligned}
           c \not = {a + b \over a }
           \end{aligned} \]
-      section 
+      section(data-background-color='rgb(0, 0, 0)' data-background-transition="zoom")
         h4 Thank You
         a(href="pdf/test.pdf") Download
