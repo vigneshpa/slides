@@ -13,7 +13,15 @@
 		},
 		"[json]": {
 			"editor.defaultFormatter": "esbenp.prettier-vscode"
-		}
+		},
+		"editor.formatOnSave": true,
+		"editor.formatOnSaveMode": "modifications",
+		"prettier.trailingComma": "es5",
+		"prettier.tabWidth": 2,
+		"prettier.semi": true,
+		"prettier.singleQuote": true,
+		"prettier.arrowParens": "avoid",
+		"prettier.printWidth": 150,
 	},
 	"tasks": {
 		"version": "2.0.0",
