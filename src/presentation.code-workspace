@@ -22,6 +22,7 @@
 		"prettier.singleQuote": true,
 		"prettier.arrowParens": "avoid",
 		"prettier.printWidth": 150,
+		"prettier.resolveGlobalModules": true
 	},
 	"tasks": {
 		"version": "2.0.0",
