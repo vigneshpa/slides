@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="300"
+   height="300"
+   viewBox="0 0 79.374998 79.375002"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="flywheel.svg"
+   inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#949494"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:document-units="px"
+     showgrid="false"
+     units="px"
+     width="300px"
+     inkscape:zoom="1.5954864"
+     inkscape:cx="302.41561"
+     inkscape:cy="168.60062"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path31"
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.00126"
+       d="M 150 0 A 150 150.18897 0 0 0 0 150.18945 A 150 150.18897 0 0 0 150 300.37891 A 150 150.18897 0 0 0 300 150.18945 A 150 150.18897 0 0 0 150 0 z M 136.77148 28.757812 L 136.77148 121.90625 A 31.211376 31.250693 2.0860881 0 0 121.74609 136.96094 L 28.990234 136.96094 A 122.10414 122.25796 2.0860881 0 1 136.77148 28.757812 z M 163.22852 29.025391 A 122.10414 122.25796 2.0860881 0 1 271.2793 136.96094 L 178.27539 136.96094 A 31.211376 31.250693 2.0860881 0 0 163.22852 121.88477 L 163.22852 29.025391 z M 150.60352 133.59961 A 16.580074 16.60096 2.0860881 0 1 166.56836 150.79297 A 16.580074 16.60096 2.0860881 0 1 149.39648 166.7793 A 16.580074 16.60096 2.0860881 0 1 133.43164 149.58594 A 16.580074 16.60096 2.0860881 0 1 150.60352 133.59961 z M 28.720703 163.41797 L 121.74414 163.41797 A 31.211376 31.250693 2.0860881 0 0 136.77148 178.47461 L 136.77148 271.35156 A 122.10414 122.25796 2.0860881 0 1 28.720703 163.41797 z M 178.25391 163.41797 L 271.3457 163.41797 A 122.10414 122.25796 2.0860881 0 1 163.22852 271.68555 L 163.22852 178.4707 A 31.211376 31.250693 2.0860881 0 0 178.25391 163.41797 z "
+       transform="scale(0.26458333)" />
+  </g>
+</svg>

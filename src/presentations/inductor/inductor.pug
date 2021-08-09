@@ -1,0 +1,45 @@
+html(lang='en')
+
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  title Inductors
+body
+  .reveal
+    .slides
+      section(data-background-color='#FFFFFF', data-auto-animate)
+        h4 Visualising current through pure resistive and inductive load
+        #sim
+          #view
+            img#flywheel(src=require("./flywheel.svg"))
+          #controls
+            | Current : 
+            span#currentValue 0.0
+            | A
+            br
+            label(for="voltage")
+              | Voltage : 
+              span#voltageValue 0.0
+              | V
+            br
+            input(type="range" name="voltage" min="-10" max="10" step="0.5" value="0" oninput="onVoltage(this.value)")
+            br
+            button(onclick="this.innerText = toogleResInd()") Resistive
+
+      section(data-background-color='#402218')
+        h4 How an inductor works
+        video(controls)
+          source(src='https://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_720p_stereo.ogg', type='video/ogg')
+          source(src='https://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_720p_stereo.avi', type='video/x-msvideo')
+          source(src='https://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_720p_h264.mov', type='video/quicktime')
+
+      section(data-background-color='#52006A')
+        h6 Testing math
+        p.
+          \[\begin{aligned}
+          c \not = {a + b \over a }
+          \end{aligned} \]
+      section(data-background-color='rgb(0, 0, 0)', data-background-transition='zoom')
+        h4 Thank You
+        a(href='pdf/test.pdf') Download

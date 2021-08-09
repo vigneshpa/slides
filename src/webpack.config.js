@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const resolve = require('path').resolve;
-const slide = process.env.SLIDE || 'test.pug';
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const slide = process.env.SLIDE || 'test';
 const template = '!!pug-loader!' + resolve(__dirname, `presentations/${slide}/${slide}.pug`);
 const entry = {};
 entry[slide] = resolve(__dirname, `presentations/${slide}/${slide}.js`);
@@ -9,8 +10,12 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.ts$/i,
+        use: 'ts-loader',
+      },
+      {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -23,9 +28,10 @@ module.exports = {
       },
     ],
   },
+  resolve: { extensions: ['.js', '.jsm', '.ts', '.json'] },
   plugins: [
+    new MiniCssExtractPlugin({ filename: 'assets/' + slide + '.css' }),
     new HtmlWebpackPlugin({
-      inlineSource: '.(js|css)$',
       inject: 'head',
       scriptLoading: 'defer',
       template,
