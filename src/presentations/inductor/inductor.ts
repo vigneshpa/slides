@@ -24,7 +24,7 @@ let loadtype: 'Resistive' | 'Inductive' = 'Resistive';
 const integrateResistorCurrent = (delta: number) => voltage / 10;
 
 // Inductor function
-const integrateInductorCurrent = (delta: number) => (currentIntegral += (delta * voltage) / inductance);
+const integrateInductorCurrent = (delta: number) => (currentIntegral += (delta * voltage) / inductance); // as V=-L(di/dt)
 
 let previousTS: number = 0;
 const step: FrameRequestCallback = timeStamp => {
