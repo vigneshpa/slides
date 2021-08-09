@@ -12,7 +12,6 @@ const volEl = document.getElementById('voltageValue')!;
 const curEl = document.getElementById('currentValue')!;
 
 const wheelEl = document.getElementById('flywheel')!;
-console.log(wheelEl);
 let wheelR: number = 0;
 
 let currentIntegral: number = 0;
