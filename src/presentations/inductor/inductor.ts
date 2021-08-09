@@ -34,11 +34,12 @@ const step: FrameRequestCallback = timeStamp => {
   rps = angVelCurrentRatio * current;
 
   wheelR += rps * delta * 360;
-  wheelEl.style.rotate = `${wheelR}deg`;
+  wheelEl.style.transform = `rotate(${wheelR}deg)`;
 
   // --
   curEl.innerText = current.toFixed(1);
   previousTS = timeStamp;
   window.requestAnimationFrame(step);
+  console.log({ delta });
 };
 window.requestAnimationFrame(step);
