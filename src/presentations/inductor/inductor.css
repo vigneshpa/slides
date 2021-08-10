@@ -46,6 +46,11 @@ body {
 input[type='range']{
   width:90%;
   max-width:300px;
+  margin-bottom: 20px;
+}
+label{
+  padding:5px 3px;
+  display: inline-block;
 }
 
 #flywheel{
