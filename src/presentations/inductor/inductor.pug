@@ -6,7 +6,7 @@ head
   meta(name='viewport', content='width=device-width, initial-scale=1.0')
   title Inductors
 body
-  #header Visualising current as a wheel
+  #header Visualising Current as angular velocity
   #content
     #sim
       #view
@@ -16,6 +16,7 @@ body
       span#currentValue 0.0
       | A
       br
+      progress(min="0" max="4" id="currentPgr" value="2")
       br
       label(for="voltage")
         | Voltage : 
@@ -25,11 +26,11 @@ body
       input(type="range" name="voltage" min="-10" max="10" step="0.5" value="0" oninput="onVoltage(this.value)" autocomplete="off")
       br 
       input(type="checkbox" id="generateSine" onchange="onGenerateSine(this.checked)")
-      label(for="generateSine") Generate Sine Wave
+      label(for="generateSine") Generate Sine Wave (0.2Hz)
       br
       #circuitType
         h4 Select Circuit type:
-        each inp,ind in {'Resistive':'Pure Resistive', 'Inductive':'Pure Inductive', 'ResInd':'RL Circuit'}
+        each inp,ind in {'Resistive':'Pure Resistor', 'Inductive':'Pure Inductor', 'ResInd':'RL Circuit'}
           input(type="radio" name="circuit" value=ind id=ind onchange="if(this.checked)onCircuitType(this.value);" checked=(ind==='Resistive'))
           label(for=ind)=inp
           br
@@ -39,4 +40,4 @@ body
       | Resistance : 5Ω
       br
     #footer source code is avilable at 
-      a(href='https://github.com/vigneshpa/slides/tree/main/src/presentations/inductor' target="_blank") GitHub
+      a(href='https://github.com/vigneshpa/slides/tree/main/src/presentations/inductor' target="_blank") GitHub.com

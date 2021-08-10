@@ -1,5 +1,7 @@
 const inductance = 10; // in Henries(H)
 const resistance = 5;  // in Ohms(Ω)
+const sineWaveFrequency = 0.2; // in Hertz (Hz)
+const sineWaveAngularVelocity = 2 * Math.PI * sineWaveFrequency; // in rad/sec as ω=2πf
 
 const angularVelocityCurrentRatio = 1;
 
@@ -14,32 +16,38 @@ window.onVoltage = (val: string) => {
 };
 const curEl = document.getElementById('currentValue')!;
 
+const curPgr = document.getElementById('currentPgr') as HTMLProgressElement;
+
 const wheelEl = document.getElementById('flywheel')!;
 let wheelR: number = 0;
-
 
 // Current integral for integration
 let currentIntegral: number = 0;
 
 // Sine function generator
-let generatorStartTS:number|null = null;
+let generatorStartTS: number | null = null;
 let generateSine: boolean = false;
-window.onGenerateSine = checked => {generatorStartTS = null;currentIntegral=0;rps=0; generateSine = !!checked};
+window.onGenerateSine = checked => {
+  generatorStartTS = null;
+  currentIntegral = 0;
+  rps = 0;
+  generateSine = !!checked;
+};
 
 // Resistor function
 const integrateResistorCurrent = (delta: number) => voltage / resistance;
 
 // Inductor function
-const integrateInductorCurrent = (delta: number) => currentIntegral += (delta * voltage) / inductance; // as V=-L(di/dt)
+const integrateInductorCurrent = (delta: number) => (currentIntegral += (delta * voltage) / inductance); // as V=-L(di/dt)
 
 // ResInd function
-const integrateResIndCurrent = (delta: number) => (currentIntegral += (delta * (voltage - (currentIntegral * resistance))) / inductance); // as V=-L(di/dt)+iR
+const integrateResIndCurrent = (delta: number) => (currentIntegral += (delta * (voltage - currentIntegral * resistance)) / inductance); // as V=-L(di/dt)+iR
 
 let integrateCurrent = integrateResistorCurrent;
 
 window.onCircuitType = loadt => {
   currentIntegral = 0;
-  if(generateSine)window.onGenerateSine(true);
+  if (generateSine) window.onGenerateSine(true);
   switch (loadt) {
     case 'Resistive':
       integrateCurrent = integrateResistorCurrent;
@@ -53,7 +61,7 @@ window.onCircuitType = loadt => {
     default:
       integrateCurrent = integrateResistorCurrent;
   }
-}
+};
 
 let previousTS: number = 0;
 const step: FrameRequestCallback = timeStamp => {
@@ -68,9 +76,11 @@ const step: FrameRequestCallback = timeStamp => {
 
   // --
   curEl.innerText = current.toFixed(1);
-  if(!generatorStartTS)generatorStartTS = timeStamp;
+  curPgr.value = current + 2;
+  if (!generatorStartTS) generatorStartTS = timeStamp;
   if (generateSine)
-    (<any>volEl).innerText = ((<any>voltageInp).value = voltage = 10 * Math.sin((timeStamp-generatorStartTS) / 1000)).toFixed(1);
+    (<any>volEl).innerText = ((<any>voltageInp).value = voltage =
+      10 * Math.sin(((timeStamp - generatorStartTS) * sineWaveAngularVelocity) / 1000)).toFixed(1);
   previousTS = timeStamp;
   window.requestAnimationFrame(step);
 };
