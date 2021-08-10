@@ -4,7 +4,7 @@ const sineWaveFrequency = 0.2; // in Hertz (Hz)
 const sineWaveAngularVelocity = 2 * Math.PI * sineWaveFrequency; // in rad/sec as ω=2πf
 const voltageMax = 10;
 const currentMax = 2;
-const initialInductorCurrent = -voltageMax/(inductance*sineWaveAngularVelocity);
+const initialInductorCurrent = -voltageMax/(inductance*sineWaveAngularVelocity); // as -I₀=-E₀/Lω
 
 const angularVelocityCurrentRatio = 1;
 
@@ -44,7 +44,7 @@ window.onGenerateSine = checked => {
 };
 
 // Resistor function
-const integrateResistorCurrent = (delta: number) => voltage / resistance;
+const integrateResistorCurrent = (delta: number) => voltage / resistance; // as V=iR
 
 // Inductor function
 const integrateInductorCurrent = (delta: number) => (currentIntegral += (delta * voltage) / inductance); // as V=-L(di/dt)
