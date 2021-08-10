@@ -16,22 +16,22 @@ body
       span#currentValue 0.0
       | A
       br
-      progress(min="0" max="4" id="currentPgr" value="2")
+      progress(id="currentPgr" value="2")
       br
       label(for="voltage")
         | Voltage : 
         span#voltageValue 0.0
         | V
       br
-      input(type="range" name="voltage" min="-10" max="10" step="0.5" value="0" oninput="onVoltage(this.value)" autocomplete="off")
+      input(type="range" name="voltage" step="0.5" value="0" oninput="onVoltage(this.value)" autocomplete="off")
       br 
-      input(type="checkbox" id="generateSine" onchange="onGenerateSine(this.checked)")
+      input(type="checkbox" id="generateSine" onchange="onGenerateSine(this.checked)" autocomplete="off")
       label(for="generateSine") Generate Sine Wave (0.2Hz)
       br
       #circuitType
         h4 Select Circuit type:
-        each inp,ind in {'Resistive':'Pure Resistor', 'Inductive':'Pure Inductor', 'ResInd':'RL Circuit'}
-          input(type="radio" name="circuit" value=ind id=ind onchange="if(this.checked)onCircuitType(this.value);" checked=(ind==='Resistive'))
+        each inp,ind in {'Resistive':'Pure Resistor', 'Inductive':'Pure Inductor', 'InductiveCorrected':'Pure Inductor (initial current corrected)', 'ResInd':'RL Circuit'}
+          input(type="radio" name="circuit" value=ind id=ind onchange="if(this.checked)onCircuitType(this.value);" checked=(ind==='Resistive') autocomplete="off")
           label(for=ind)=inp
           br
       h4 Circuit Constants

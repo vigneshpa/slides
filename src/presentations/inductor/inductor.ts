@@ -2,6 +2,9 @@ const inductance = 10; // in Henries(H)
 const resistance = 5;  // in Ohms(Ω)
 const sineWaveFrequency = 0.2; // in Hertz (Hz)
 const sineWaveAngularVelocity = 2 * Math.PI * sineWaveFrequency; // in rad/sec as ω=2πf
+const voltageMax = 10;
+const currentMax = 2;
+const initialInductorCurrent = -voltageMax/(inductance*sineWaveAngularVelocity);
 
 const angularVelocityCurrentRatio = 1;
 
@@ -9,6 +12,8 @@ let voltage = 0;
 let rps = 0;
 
 const voltageInp = document.getElementsByName('voltage')[0] as HTMLInputElement;
+voltageInp.max = voltageMax as unknown as string;
+voltageInp.min = -voltageMax as unknown as string;
 const volEl = document.getElementById('voltageValue')!;
 window.onVoltage = (val: string) => {
   voltage = +val;
@@ -17,9 +22,12 @@ window.onVoltage = (val: string) => {
 const curEl = document.getElementById('currentValue')!;
 
 const curPgr = document.getElementById('currentPgr') as HTMLProgressElement;
+curPgr.max = currentMax*2;
 
 const wheelEl = document.getElementById('flywheel')!;
 let wheelR: number = 0;
+
+let loadtype:Parameters<Window['onCircuitType']>[0] = 'Resistive';
 
 // Current integral for integration
 let currentIntegral: number = 0;
@@ -32,6 +40,7 @@ window.onGenerateSine = checked => {
   currentIntegral = 0;
   rps = 0;
   generateSine = !!checked;
+  if(generateSine && loadtype === 'InductiveCorrected')currentIntegral = initialInductorCurrent;
 };
 
 // Resistor function
@@ -47,6 +56,7 @@ let integrateCurrent = integrateResistorCurrent;
 
 window.onCircuitType = loadt => {
   currentIntegral = 0;
+  loadtype = loadt;
   if (generateSine) window.onGenerateSine(true);
   switch (loadt) {
     case 'Resistive':
@@ -57,6 +67,9 @@ window.onCircuitType = loadt => {
       break;
     case 'ResInd':
       integrateCurrent = integrateResIndCurrent;
+      break;
+    case 'InductiveCorrected':
+      integrateCurrent = integrateInductorCurrent;
       break;
     default:
       integrateCurrent = integrateResistorCurrent;
@@ -76,11 +89,11 @@ const step: FrameRequestCallback = timeStamp => {
 
   // --
   curEl.innerText = current.toFixed(1);
-  curPgr.value = current + 2;
+  curPgr.value = current + currentMax;
   if (!generatorStartTS) generatorStartTS = timeStamp;
   if (generateSine)
     (<any>volEl).innerText = ((<any>voltageInp).value = voltage =
-      10 * Math.sin(((timeStamp - generatorStartTS) * sineWaveAngularVelocity) / 1000)).toFixed(1);
+      voltageMax * Math.sin(((timeStamp - generatorStartTS) * sineWaveAngularVelocity) / 1000)).toFixed(1);
   previousTS = timeStamp;
   window.requestAnimationFrame(step);
 };
@@ -88,6 +101,6 @@ window.requestAnimationFrame(step);
 
 interface Window {
   onVoltage: (val: string) => void;
-  onCircuitType: (loadt: 'Resistive' | 'Inductive' | 'ResInd') => void;
+  onCircuitType: (loadt: 'Resistive' | 'Inductive' | 'InductiveCorrected' | 'ResInd') => void;
   onGenerateSine: (checked: boolean) => void;
 }
