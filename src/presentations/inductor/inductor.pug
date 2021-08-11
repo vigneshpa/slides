@@ -23,7 +23,7 @@ body
         span#voltageValue 0.0
         | V
       br
-      input(type="range" name="voltage" step="0.5" value="0" oninput="onVoltage(this.value)" autocomplete="off")
+      input(type="range" id="voltage" name="voltage" step="0.5" value="0" oninput="onVoltage(this.value)" autocomplete="off")
       br 
       input(type="checkbox" id="generateSine" onchange="onGenerateSine(this.checked)" autocomplete="off")
       label(for="generateSine") Generate Sine Wave (0.2Hz)
