@@ -85,6 +85,7 @@ const step: FrameRequestCallback = timeStamp => {
   rps = angularVelocityCurrentRatio * current;
 
   wheelR += rps * delta * 360;
+  if(wheelR > 5000 || wheelR < -5000)wheelR = wheelR % 360;
   wheelEl.style.transform = `rotate(${wheelR}deg)`;
 
   // --
