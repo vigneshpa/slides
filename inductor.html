@@ -9,10 +9,28 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Inductors (deprecated)</title>
   <style>
+    :root {
+      --text-color:rgb(46, 46, 46);
+      --background-color:rgb(247, 247, 247);
+      --ancor-color:#0e469b;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-color:rgb(247, 247, 247);
+        --background-color:rgb(46, 46, 46);
+        --ancor-color:#4181e0;
+      }
+    }
     body{
       font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
       padding: 1em;
       text-align: center;
+      transition:background-color 0.3s ease, color 0.3s ease;
+      color: var(--text-color);
+      background-color: var(--background-color);
+    }
+    a{
+      color:var(--ancor-color);
     }
   </style>
 </head>
